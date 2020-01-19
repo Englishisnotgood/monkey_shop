@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="admin_menu.jsp" %>
     <!--/sidebar-->
     <div class="main-wrap">
@@ -9,18 +10,18 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="#" method="post">
+                <form action="/Monkey_shop/manage/admin_douserselect" method="get">
                     <table class="search-tab">
                         <tr>
-                            <th width="120">选择分类:</th>
+                            <!--  <th width="120">选择分类:</th>
                             <td>
                                 <select name="search-sort" id="">
                                     <option value="">全部</option>
                                     <option value="19">精品界面</option><option value="20">推荐界面</option>
                                 </select>
-                            </td>
+                            </td>-->
                             <th width="70">关键字:</th>
-                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="关键字" name="keywords" value="${param.keywords }" id="" type="text"></td>
                             <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                         </tr>
                     </table>
@@ -40,56 +41,40 @@
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>排序</th>
                             <th>ID</th>
-                            <th>标题</th>
-                            <th>审核状态</th>
-                            <th>点击</th>
-                            <th>发布人</th>
-                            <th>更新时间</th>
-                            <th>评论</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>EMAIL</th>
+                            <th>手机</th>
                             <th>操作</th>
                         </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="59" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>59</td>
-                            <td title="发哥经典"><a target="_blank" href="#" title="发哥经典">发哥经典</a> …
-                            </td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>admin</td>
-                            <td>2014-03-15 21:11:01</td>
-                            <td></td>
-                            <td>
-                                <a class="link-update" href="#">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tc"><input name="id[]" value="58" type="checkbox"></td>
-                            <td>
-                                <input name="ids[]" value="58" type="hidden">
-                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
-                            </td>
-                            <td>58</td>
-                            <td title="黑色经典"><a target="_blank" href="#" title="黑色经典">黑色经典</a> …
-                            </td>
-                            <td>0</td>
-                            <td>35</td>
-                            <td>admin</td>
-                            <td>2013-12-30 22:34:00</td>
-                            <td></td>
-                            <td>
-                                <a class="link-update" href="#">修改</a>
-                                <a class="link-del" href="#">删除</a>
-                            </td>
-                        </tr>
+                        
+                        <c:forEach var="u" items="${userlist}">
+	                        <tr>
+	                            <td class="tc"><input name="id[]" value="${u.USER_ID}" type="checkbox"></td>
+	                            <td>${u.USER_ID }</td>
+	                             <td>${u.USER_NAME }</td>
+	                              <td>${u.USER_SEX=='T'?'男':'女' }</td>
+	                               <td>${u.USER_EMAIL }</td>
+	                                <td>${u.USER_MOBILE }</td>
+	                        
+	                            <td>
+	                                <a class="link-update" href="admin_touserupdate?id=${u.USER_ID}&cpage=${cpage}">修改</a>
+	                                <a class="link-del" href="#">删除</a>
+	                            </td>
+	                        </tr>
+                        </c:forEach>
+                        
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">
+                    	共${tsum }条记录， 当前${cpage }/${tpage }页
+                    	<a href="admin_douserselect?cp=1${searchParams}">首页</a>
+                    	<a href="admin_douserselect?cp=${cpage-1<0?1:cpage-1}${searchParams}">上一页</a>
+                    	<a href="admin_douserselect?cp=${cpage+1>tpage?tpage:cpage+1}${searchParams}">下一页</a>
+                    	<a href="admin_douserselect?cp=${tpage}${searchParams}">尾页</a>
+                    	
+                    	
+                    </div>
                 </div>
             </form>
         </div>
