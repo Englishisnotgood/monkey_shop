@@ -13,7 +13,7 @@
             <div class="result-content">
                 <form action="/Monkey_shop/manage/admin_douserupdate" method="post" id="myform" name="myform">
                 <input type="hidden" name="userStatus" value="${user.USER_STATUS }">
-                <input type="hidden" name="capge" value="${capge }">
+                <input type="hidden" name="cpage" value="${cpage }">
                     <table class="insert-tab" width="100%">
                         <tbody>
                             <tr>

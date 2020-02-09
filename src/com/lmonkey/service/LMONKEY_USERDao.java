@@ -35,6 +35,32 @@ public class LMONKEY_USERDao {
 		return Basedao.exectuIUD(sql, params);
 	}
 	
+	public static int del(String id) {
+		String sql = "delete from LMONKEY_USER where USER_ID=? and USER_STATUS!=2";
+		Object[] params = {id};
+		
+		return Basedao.exectuIUD(sql, params);
+	}
+	
+	public static int update(LMONKEY_USER u) {
+		String sql = "update LMONKEY_USER set USER_NAME=?, USER_PASSWORD=?, USER_SEX=?, USER_BIRTHDAY=DATE_FORMAT(?,'%Y-%m-%d'), USER_IDENITY_CODE=?, USER_EMAIL=?, USER_MOBILE=?, USER_ADDRESS=?, USER_STATUS=? where USER_ID=?";
+		
+		Object[] params = {
+				u.getUSER_NAME(),
+				u.getUSER_PASSWORD(),
+				u.getUSER_SEX(),
+				u.getUSER_BIRTHDAY(),
+				u.getUSER_IDENITY_CODE(),
+				u.getUSER_EMAIL(),
+				u.getUSER_MOBILE(),
+				u.getUSER_ADDRESS(),
+				u.getUSER_STATUS(),
+				u.getUSER_ID()
+		};
+		
+		return Basedao.exectuIUD(sql, params);
+	}
+	
 	
 	/**
 	 * 获取总记录数和总页数

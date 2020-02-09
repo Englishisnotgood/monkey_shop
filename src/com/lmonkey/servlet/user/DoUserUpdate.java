@@ -47,7 +47,7 @@ public class DoUserUpdate extends HttpServlet {
 			
 				//成功或失败重定向到哪里
 				if(count > 0) {
-					response.sendRedirect("admin_douserselect?cp=" + request.getParameter("capge"));
+					response.sendRedirect("admin_douserselect?cp=" + request.getParameter("cpage"));
 				}
 				else {
 					PrintWriter out = response.getWriter();
