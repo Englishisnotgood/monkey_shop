@@ -6,6 +6,7 @@
     <title>注册</title>
     <link rel="stylesheet" type="text/css" href="css/public.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/function.js"></script>
     
@@ -25,10 +26,10 @@
 <div class="reg">
     <form action="#" method="post"><h1><a href="index.html"><img src="img/temp/logo.png"></a></h1>
         <h1 sytle="padding:0px;magin:0px;font-size:30px;background:#3344AA;text-align:center;line-height:60px;color:#FFFFFF">用户注册</h1>
-        <p><input type="text" name="userName" value="" placeholder="请输入用户名"><span class="error">用户名不能为空</span></p>
-        <p><input type="text" name="Name" value="" placeholder="请输入姓名"><span></span></p>
-        <p><input type="text" name="password" value="" placeholder="请输入密码"><span></span></p>
-        <p><input type="text" name="rePassword" value="" placeholder="请确认密码"><span></span></p>
+        <p><input type="text" name="userName" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入用户名"><span></span></p>
+        <p><input type="text" name="Name" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入姓名"><span></span></p>
+        <p><input type="text" name="password" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入密码"><span></span></p>
+        <p><input type="text" name="rePassword" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请确认密码"><span></span></p>
         <p>
         	<input style="width: 15px;height: 15px" type="radio" name="sex" value="T" checked="checked">男
         	<input style="width: 15px;height: 15px" type="radio" name="sex" value="F" checked="checked">女
@@ -37,8 +38,8 @@
         <p><input type="text" name="email" value="" placeholder="请输入邮箱"><span></span></p>
         <p><input type="text" name="mobile" value="" placeholder="请输入手机号码"><span></span></p>
         <p><input type="text" name="address" value="" placeholder="请输入送货地址"><span></span></p>
-        <p><input class="code" type="text" name="veryCode" value="" placeholder="验证码"><img
-                height="25" src="getcode" alt="看不清，换一张" onclick="change(this)"></p>
+        <p><input class="code" type="text" name="veryCode" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="验证码">
+        <img height="25" src="getcode" alt="看不清，换一张"  onclick="change(this)"><span></span></p>
         <p><input type="submit" name="" value="注册"></p>
         <p class="txtL txt">完成此注册，即表明您同意了我们的<a href="#">
             <使用条款和隐私策略>
