@@ -18,6 +18,16 @@ function CheckItem(obj){
 		if(obj.value == ""){
 			msgBox.html('用户名不能为空');
 			msgBox.addClass('error');
+		}else{
+			var url = "usernamecheck?name="+encodeURI($(obj).val())+"&"+new Date().getTime();
+			$.get(url, function(data){
+				if(data == "false"){
+					msgBox.html('用户名不能使用');
+					msgBox.addClass('error');
+				}else{
+					msgBox.html().removeClass('error');
+				}
+			});
 		}
 		break;
 	case "password":
@@ -40,6 +50,16 @@ function CheckItem(obj){
 		if(obj.value == ""){
 			numshow.html('验证码不能为空');
 			numshow.addClass('error');
+		}else{
+			var url = "checkusernum?num="+encodeURI($(obj).val())+"&"+new Date().getTime();
+			$.get(url, function(numdata){
+				if(numdata == 'false'){
+					numshow.html("验证码错误");
+					numshow.addClass('error');
+				}else{
+					numshow.html().removeClass('error');
+				}
+			});
 		}
 		break;
 	}

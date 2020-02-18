@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 public class CodeUtil {
 private static int width = 90;// 定义图片的width
 private static int height = 25;// 定义图片的height
-private static int codeCount =6;// 定义图片上显示验证码的个数
+private static int codeCount =5;// 定义图片上显示验证码的个数
 private static int xx = 15;
 private static int fontHeight = 18;
 private static int codeY = 16;

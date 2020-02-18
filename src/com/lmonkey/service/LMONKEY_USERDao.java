@@ -62,6 +62,33 @@ public class LMONKEY_USERDao {
 	}
 	
 	
+	public static int selectByName(String id) {	
+		int count = 0;
+		Connection conn = Basedao.getconn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "";
+			sql = "select count(*) from LMONKEY_USER where USER_ID=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			Basedao.closeall(rs, ps, conn);
+		}
+		
+		return count;
+	}
+	
+	
 	/**
 	 * 获取总记录数和总页数
 	 * @param count
