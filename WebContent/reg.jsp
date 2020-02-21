@@ -24,12 +24,12 @@
 </head>
 <body><!-------------------reg-------------------------->
 <div class="reg">
-    <form action="#" method="post"><h1><a href="index.html"><img src="img/temp/logo.png"></a></h1>
+    <form action="register" method="post" onsubmit=""><h1><a href="index.html"><img src="img/temp/logo.png"></a></h1>
         <h1 sytle="padding:0px;magin:0px;font-size:30px;background:#3344AA;text-align:center;line-height:60px;color:#FFFFFF">用户注册</h1>
         <p><input type="text" name="userName" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入用户名"><span></span></p>
-        <p><input type="text" name="Name" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入姓名"><span></span></p>
-        <p><input type="text" name="password" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入密码"><span></span></p>
-        <p><input type="text" name="rePassword" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请确认密码"><span></span></p>
+        <p><input type="text" name="name" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入姓名"><span></span></p>
+        <p><input type="text" name="passWord" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入密码"><span></span></p>
+        <p><input type="text" name="rePassWord" value=""  onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请确认密码"><span></span></p>
         <p>
         	<input style="width: 15px;height: 15px" type="radio" name="sex" value="T" checked="checked">男
         	<input style="width: 15px;height: 15px" type="radio" name="sex" value="F" checked="checked">女
