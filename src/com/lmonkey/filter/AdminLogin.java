@@ -46,7 +46,6 @@ public class AdminLogin implements Filter {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		System.out.println("过滤器");
 		HttpSession session = req.getSession();
 		String flag = (String)session.getAttribute("isAdminLogin");
 		
