@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.lmonkey.dao.Basedao;
 import com.lmonkey.entity.LMONKEY_CATEGORY;
+import com.lmonkey.entity.LMONKEY_USER;
 
 /**
  * 获取所有分类
@@ -44,5 +45,21 @@ public class LMONKEY_CATEGORYDao {
 		}
 		
 		return list;
+	}
+	
+	/**
+	 * 添加分类
+	 * @param cate
+	 * @return
+	 */
+	public static int insert(LMONKEY_CATEGORY cate) {
+		String sql = "insert into LMONKEY_CATEGORY values(null, ?, ?)";
+		
+		Object[] params = {
+				cate.getCATE_NAME(),
+				cate.getCATE_PARENT_ID()
+		};
+		
+		return Basedao.exectuIUD(sql, params);
 	}
 }

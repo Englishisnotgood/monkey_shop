@@ -8,31 +8,12 @@
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">分类管理</span></div>
         </div>
-        <div class="search-wrap">
-            <div class="search-content">
-                <form action="/Monkey_shop/manage/admin_douserselect" method="get">
-                    <table class="search-tab">
-                        <tr>
-                            <!--  <th width="120">选择分类:</th>
-                            <td>
-                                <select name="search-sort" id="">
-                                    <option value="">全部</option>
-                                    <option value="19">精品界面</option><option value="20">推荐界面</option>
-                                </select>
-                            </td>-->
-                            <th width="70">关键字:</th>
-                            <td><input class="common-text" placeholder="关键字" name="keywords" value="${param.keywords }" id="" type="text"></td>
-                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
+        
         <div class="result-wrap">
             <form action="/Monkey_shop/manage/admin_douserdel" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="admin_useradd.jsp"><i class="icon-font"></i>新增分类</a>
+                        <a href="/Monkey_shop/manage/admin_tocateadd"><i class="icon-font"></i>新增分类</a>
                         <a id="batchDel" href="javascript:delmore('你确定删除这些用户吗？', 'myform')"><i class="icon-font"></i>批量删除</a>
                         <!-- <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>-->
                     </div>
