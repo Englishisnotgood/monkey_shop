@@ -110,4 +110,53 @@ public class LMONKEY_CATEGORYDao {
 		
 		return Basedao.exectuIUD(sql, params);
 	}
+	
+	public static int del(int id) {
+		String sql = "delete from LMONKEY_CATEGORY where CATE_ID=?";
+		Object[] params = {id};
+		return Basedao.exectuIUD(sql, params);
+	}
+	
+	
+	/**
+	 * 查询分类，子分类和父分类
+	 * @param flag flag="father" flag="child"
+	 * @return
+	 */
+	public static ArrayList<LMONKEY_CATEGORY> selectCat(String flag){
+		ArrayList<LMONKEY_CATEGORY> list = new ArrayList<LMONKEY_CATEGORY>();
+		//声明结果集
+		ResultSet rs = null;
+		//获取连接对象
+		Connection conn = Basedao.getconn();
+		
+		PreparedStatement ps = null;
+		
+		try {
+			String sql = null;
+			if(flag != null && flag.equals("father")) {
+				sql = "select * from LMONKEY_CATEGORY where CATE_PARENT_ID=0";
+			}else {
+				sql = "select * from LMONKEY_CATEGORY where CATE_PARENT_ID!=0";
+			}
+			
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();		
+			while(rs.next()) {
+				LMONKEY_CATEGORY cate = new LMONKEY_CATEGORY(
+						rs.getInt("CATE_ID"),
+						rs.getString("CATE_NAME"),
+						rs.getInt("CATE_PARENT_ID")
+						);
+				list.add(cate);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			Basedao.closeall(rs, ps, conn);
+		}
+		
+		return list;
+	}
 }

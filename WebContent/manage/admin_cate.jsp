@@ -14,7 +14,7 @@
                 <div class="result-title">
                     <div class="result-list">
                         <a href="/Monkey_shop/manage/admin_tocateadd"><i class="icon-font"></i>新增分类</a>
-                        <a id="batchDel" href="javascript:delmore('你确定删除这些用户吗？', 'myform')"><i class="icon-font"></i>批量删除</a>
+                        
                         <!-- <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>-->
                     </div>
                 </div>
@@ -33,28 +33,27 @@
 	                        <tr>
 	                           <td>${cate.CATE_ID }</td>
 	                           <td>|-${cate.CATE_NAME }</td>
-	                           <td><a href="admin_tocateupdate?id=${cate.CATE_ID }">修改</a><a href="">删除</a></td>
+	                           <td><a href="admin_tocateupdate?id=${cate.CATE_ID }">修改</a><a href="javascript:catedel(${cate.CATE_ID })">删除</a></td>
 	                        </tr>
 	                        <c:forEach var="zcate" items="${catelist}">
 	                        <c:if test="${zcate.CATE_PARENT_ID==cate.CATE_ID }"> 
 	                        	<tr>
 	                           		<td>${zcate.CATE_ID }</td>
 	                           		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-${zcate.CATE_NAME }</td>
-	                           		<td><a href="admin_tocateupdate?id=${zcate.CATE_ID }">修改</a><a href="">删除</a></td>
+	                           		<td><a href="admin_tocateupdate?id=${zcate.CATE_ID }">修改</a><a href="javascript:catedel(${zcate.CATE_ID })">删除</a></td>
 	                        	</tr>
 	                        </c:if>
 	                        </c:forEach>
 	                        
-	                        <script>
-	                        	function Delete(mess, url){
-	                        		if(confirm(mess)){
-	                        			location.href=url;
-	                        		}
-	                        	}
-	                        	
-	                        </script>
 	                        </c:if>
                         </c:forEach>
+                        <script>
+                        	function catedel(id){
+                        		if(confirm("你确定要删除这个分类吗？")){
+                        			location.href="admin_docatedel?id="+id;
+                        		}
+                        	}
+                        </script>
                         
                     </table>
                     
@@ -63,6 +62,5 @@
         </div>
     </div>
     <!--/main-->
-</div>
 </body>
 </html>
