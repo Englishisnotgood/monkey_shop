@@ -62,4 +62,52 @@ public class LMONKEY_CATEGORYDao {
 		
 		return Basedao.exectuIUD(sql, params);
 	}
+	
+	
+	public static LMONKEY_CATEGORY selectById(int id){
+		LMONKEY_CATEGORY cate = null;
+		//声明结果集
+		ResultSet rs = null;
+		//获取连接对象
+		Connection conn = Basedao.getconn();
+		
+		PreparedStatement ps = null;
+		
+		try {
+			String sql = "select * from LMONKEY_CATEGORY where CATE_ID=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				cate = new LMONKEY_CATEGORY(
+						rs.getInt("CATE_ID"),
+						rs.getString("CATE_NAME"),
+						rs.getInt("CATE_PARENT_ID")
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			Basedao.closeall(rs, ps, conn);
+		}
+		
+		return cate;
+	}
+	
+	
+	public static int update(LMONKEY_CATEGORY cate) {
+		String sql = "update LMONKEY_CATEGORY set CATE_NAME=?, CATE_PARENT_ID=? where CATE_ID=?";
+		
+		Object[] params = {
+				cate.getCATE_NAME(),
+				cate.getCATE_PARENT_ID(),
+				cate.getCATE_ID()
+		};
+		
+		return Basedao.exectuIUD(sql, params);
+	}
 }
